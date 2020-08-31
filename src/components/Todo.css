@@ -1,0 +1,30 @@
+*{
+    text-align: center;
+    color: whitesmoke;
+}
+body{
+    background-color: darkslategray;
+}
+.todo-list{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 5% 0%;
+    flex-wrap: wrap;
+}
+.todo-list div{
+    width: 20%;
+    margin: 3%;
+    border-radius: 10px;
+    background-color: rgba(255, 86, 86, 0.781);
+}
+
+div.task.completed{
+    background-color: rgba(144, 238, 144, 0.63);
+    text-decoration: line-through;
+}
+button{
+    margin: 1%;
+    color: Black;
+}

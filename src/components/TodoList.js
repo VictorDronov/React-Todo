@@ -7,12 +7,14 @@ import React from "react";
 import ToDo from "./Todo";
 
 const ToDosList = (props) => {
+    const {toggleCompleted} = props
   return (
     <div className="todo-list">
       {props.todo.map((item) => (
         <ToDo
         key={item.id} 
-        task={item} 
+        task={item}
+        toggleCompleted={toggleCompleted} 
         />
       ))}
     </div>
