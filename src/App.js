@@ -2,6 +2,7 @@ import React from "react";
 import ToDoForm from "./components/TodoForm";
 import ToDoList from "./components/TodoList";
 import "./components/Todo.css";
+// import ls from "local-storage";
 
 const initialToDos = [
   {
@@ -14,13 +15,18 @@ const initialToDos = [
     id: 1528817084358,
     completed: false,
   },
+  {
+    task: "Clean Car",
+    id: 1528817084358,
+    completed: false,
+  },
 ];
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      toDos: initialToDos,
+      toDos: [],
       // formValue: "",
     };
   }
@@ -42,17 +48,17 @@ class App extends React.Component {
   };
   clearCompleted = () => {
     this.setState({
-      toDos: this.state.toDos.filter(item => {
-        if (item.completed === false){
+      toDos: this.state.toDos.filter((item) => {
+        if (item.completed === false) {
           return {
             ...item,
-            completed: item.completed
-          }
+            completed: !item.completed,
+          };
         }
-      })
-    })
-  }
-  
+      }),
+    });
+  };
+
   // This is to do with the forms
   addTask = (taskName) => {
     const newTask = {
@@ -75,6 +81,9 @@ class App extends React.Component {
     });
   };
 
+  componentDidMount() {
+    this.setState({ toDos: initialToDos });
+  }
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
@@ -97,5 +106,6 @@ class App extends React.Component {
     );
   }
 }
+localStorage.clear();
 
 export default App;
