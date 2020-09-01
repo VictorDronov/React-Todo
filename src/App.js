@@ -2,22 +2,22 @@ import React from "react";
 import ToDoForm from "./components/TodoForm";
 import ToDoList from "./components/TodoList";
 import "./components/Todo.css";
-// import ls from "local-storage";
+import ls from "local-storage";
 
 const initialToDos = [
   {
     task: "Organize Room",
-    id: Date.now(),
+    id: Math.random(),
     completed: false,
   },
   {
     task: "Bake Cookies",
-    id: 1528817084358,
+    id: Math.random(),
     completed: false,
   },
   {
     task: "Clean Car",
-    id: 1528817084358,
+    id: Math.random(),
     completed: false,
   },
 ];
@@ -82,12 +82,20 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    console.log("cdm is running")
     this.setState({ toDos: initialToDos });
+    ls.get("Task", JSON.stringify(this.state.toDos))
   }
+  componentDidUpdate(){
+    console.log("CDU is running")
+    ls.set("Task", JSON.stringify(this.state.toDos))
+  }
+
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
+    console.log("render", this.state.toDos.length)
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
